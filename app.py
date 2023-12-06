@@ -83,7 +83,7 @@ DiffWalk = col6.selectbox("9. Do you have serious difficulty walking or climbing
 
 
 # Create dataframe:
-df1 = pd.DataFrame([[round(weight), round(height), age, highchol, highbp, genhlth,HeartDiseaseorAttack,PhysActivity,DiffWalk]], columns=[
+df1 = pd.DataFrame([[weight, height, age, highchol, highbp, genhlth,HeartDiseaseorAttack,PhysActivity,DiffWalk]], columns=[
                    'Weight', 'Height', 'Age', 'HighChol', 'HighBP', 'GenHlth','HeartDiseaseorAttack','PhysActivity','DiffWalk'])
 
 
