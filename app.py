@@ -159,21 +159,18 @@ model_path = os.path.join(script_dir, 'dt_model.pkl')
 
 # Load the model
 model = joblib.load(model_path)
-df_scaled=model['scaler'].transform(df)
-prediction = model['model'].predict(df_scaled)
-prediction_probability = model['model'].predict_proba(df)
-low_risk_proba = round(prediction_probability[0][0] * 100)
-high_risk_proba = round(prediction_probability[0][1] * 100)
 
 
 # Make the prediction:
 if st.button('Click here to predict your Type II Diabetes Risk'):
 
     # make the predictions
-    prediction = model.predict(df)
-    prediction_probability = model.predict_proba(df)
+    df_scaled=model['scaler'].transform(df)
+    prediction = model['model'].predict(df_scaled)
+    prediction_probability = model['model'].predict_proba(df)
     low_risk_proba = round(prediction_probability[0][0] * 100)
     high_risk_proba = round(prediction_probability[0][1] * 100)
+
 
     if(prediction[0] == 0):
         st.write("You are at **low-risk** for Type II Diabetes or prediabetes")
