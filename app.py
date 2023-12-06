@@ -32,11 +32,11 @@ col1, col2, col3,col4,col5,col6 = st.columns(6)
 
 # 1. Weight
 weight = col1.text_input(
-    '1. Enter your Weight (lbs)', min_value=50, max_value=999, value=190)
+    '1. Enter your Weight (lbs)')
 
 # 2. Height
 height = col2.text_input(
-    '2. Enter your Height (inches): ', min_value=36, max_value=95, value=68)
+    '2. Enter your Height (inches): ')
 
 # 3. Age
 age = col3.selectbox(
