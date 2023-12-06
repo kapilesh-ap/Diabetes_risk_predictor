@@ -31,11 +31,11 @@ col1, col2, col3,col4,col5,col6 = st.columns(6)
 # gather user inputs
 
 # 1. Weight
-weight = col1.number_input(
+weight = col1.text_input(
     '1. Enter your Weight (lbs)', min_value=50, max_value=999, value=190)
 
 # 2. Height
-height = col2.number_input(
+height = col2.text_input(
     '2. Enter your Height (inches): ', min_value=36, max_value=95, value=68)
 
 # 3. Age
@@ -114,6 +114,8 @@ def prep_df(df):
 
     """
     # BMI
+    df['Weight']=df['Weight'].astype(int)
+    df['Height']=df['Height'].astype(int)
     df['BMI'] = df.apply(lambda row: calculate_bmi(
         row['Weight'], row['Height']), axis=1)
 
