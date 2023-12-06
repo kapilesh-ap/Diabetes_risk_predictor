@@ -2,6 +2,7 @@ import pandas as pd
 import joblib
 import streamlit as st
 from xgboost import XGBClassifier
+import os
 
 # Header
 st.write("""
@@ -152,9 +153,14 @@ with st.expander("Click to see what goes into the Model for prediction"):
     st.write("**User Inputs Prepared ** ", df,
              "** Note that BMI is calculated from the Weight and Height you entered. Age has 14 categories from 1 to 13 in steps of 5 years. HighChol and HighBP are 0 for No and 1 for Yes. GenHlth is on a scale from 1=Excellent to 5=Poor. These come directly from BRFSS questions the model learned from.")
 
-# load in the model
-model = joblib.load('./dt_model.pkl')
+# Get the directory of the current script or module
+script_dir = os.path.dirname(os.path.abspath(__file__)) if '__file__' in globals() else os.getcwd()
 
+# Construct the full path to the model file
+model_path = os.path.join(script_dir, 'dt_model.pkl')
+
+# Load the model
+model = joblib.load(model_path)
 prediction = model.predict(df)
 prediction_probability = model.predict_proba(df)
 low_risk_proba = round(prediction_probability[0][0] * 100)
